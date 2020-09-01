@@ -7,26 +7,35 @@ class UsersController < ApplicationController
     @user=User.new(user_params)
     if @user.save
       flash[:success]="account created successfull"
-      redirect_to user_path(@user.id)
+      redirect_to new_session_path
     else
       flash[:danger]="something is wrong !"
       render :new
     end
   end
   def show
-    
+
   end
   def edit
+
   end
   def update
     if @user.update(user_params)
       flash[:success]="Post update"
-      redirect_to user_path(@user.id)
+      session.delete(:user_id)
+      redirect_to new_session_path
+
     else
       render :new
     end
+
   end
   def destroy
+    @blog=@user.blogs.ids
+    @blog.each do|blog|
+      Blog.find(blog).destroy
+    end
+    session.delete(:user_id)
     @user.destroy
     redirect_to blogs_path
   end

@@ -1,0 +1,23 @@
+<% if logged_in? %>
+     <div class="container">
+      <table>
+        <tbody>
+          <% @favorite.each do |favorite| %>
+        <tr>
+          <td><%=favorite.blog.user.name %></td>
+        </tr>
+        <tr>
+          <td><%=image_tag favorite.blog.image.url,:class=>"img-fluid rounded mx-auto d-block",
+                                                   :alt=>"Responsive image" %></td>
+        </tr>
+        <tr>
+          <td><%=favorite.blog.content %></td>
+        </tr>
+        <% end %>
+        </tbody>
+      </table>
+<% else %>
+  <p>Please log in before post new : <span class="badge badge-pill badge-danger"><%= link_to "Log in", new_session_path%></span></p>
+  <p>Or Sign Up if you don't have account : <span class="badge badge-pill badge-warning"><%= link_to "Sign Up", new_user_path%></span></p>
+<% end %>
+</div>

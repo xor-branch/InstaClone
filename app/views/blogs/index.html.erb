@@ -1,0 +1,28 @@
+<div class="container">
+<% @blogs.each do |blog| %>
+<table class="table">
+  <tbody>
+    <tr>
+      <td><%= blog.user.name %></td>
+    </tr>
+    <tr>
+      <td><%= image_tag blog.image.url,:class=>"img-fluid rounded mx-auto d-block",
+                                        :alt=>"Responsive image"%></td>
+    </tr>
+    <tr>
+      <td><%= blog.content%></td>
+    </tr>
+  <tr class="pill">
+   <% if logged_in? %>
+      <% if blog.user.id == current_user.id %>
+        <td class="badge badge-pill badge-warning"><%= link_to "destroy",blog_path(blog.id), method: :delete, data: { confirm: 'Are you sure?'} %></td>
+        <td class="badge badge-pill badge-info"><%= link_to "edit", edit_blog_path(blog.id),data: { confirm: 'Are you sure?'} %></td>
+    <% else %>
+         <td class="badge badge-pill badge-dark"><%= link_to "show", blog_path(blog.id) %></td>
+    <% end %>
+  <% end %>
+</tr>
+  </tbody>
+</table>
+<% end %>
+</div>

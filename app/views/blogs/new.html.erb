@@ -1,0 +1,8 @@
+<div class="container">
+  <% if logged_in? %>
+    <%=render 'form' %>
+  <% else %>
+    <p>Please log in before post new : <span class="badge badge-pill badge-danger"><%= link_to "Log in", new_session_path%></span></p>
+    <p>Or Sign Up if you don't have account : <span class="badge badge-pill badge-warning"><%= link_to "Sign Up", new_user_path%></span></p>
+  <% end %>
+</div>

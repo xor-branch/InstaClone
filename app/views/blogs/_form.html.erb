@@ -1,0 +1,28 @@
+<div class="container">
+  <% if @blog.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@blog.errors.count, "error") %> prohibited
+      this article from being saved:
+    </h2>
+    <ul>
+      <% @blog.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+  <div class="field">
+    <%= form_with(model:@blog,url:choose_new_or_edit,local: true) do |form| %>
+        <%= form.text_area :content,:class=>"form-control",
+                                      :id=>"exampleInputEmail1" %>
+        <div class="actions">
+          <%= form.file_field :image %>
+          <%= form.hidden_field :image_cache %>
+        </div>
+        <div class="actions">
+          <%= form.submit "Post",:class=>"btn btn-primary"%>
+        </div>
+    <% end %>
+</div>
+</div>

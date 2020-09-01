@@ -1,0 +1,21 @@
+<div class="container">
+<table>
+  <tbody>
+    <tr>
+      <td><%=image_tag @blog.image.url%></td>
+    </tr>
+    <tr>
+      <td><%=@blog.content %></td>
+    </tr>
+    <tr class="pill">
+      <% unless @blog.user_id == current_user.id %>
+        <% if @favorite.present? %>
+          <td><%= link_to 'Unfavorite', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %></td>
+        <% else %>
+          <td><%= link_to 'favorite', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-primary' %></td>
+        <% end %>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+</div>

@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="form-group">
+    <h1>login</h1>
+    <%= form_with(scope: :session, url:sessions_path,local:true) do|f| %>
+    <%= f.label :email %>
+    <%= f.email_field :email,:type=>"email",
+                            :class=>"form-control",
+                            :id=>"exampleInputEmail1" %>
+    <%= f.label :password %>
+    <%= f.password_field :password,:type=>"password",
+                            :class=>"form-control",
+                            :id=>"exampleInputPassword1" %>
+    <br>
+    <%= f.submit "Log in",:class=>"btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

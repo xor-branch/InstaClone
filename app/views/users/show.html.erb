@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="jumbotron">
+    <h4 class="display-4">Welcomme <%= @user.name %></h4>
+    <div class="display-4"><%= image_tag @user.image.url,:class=>"img-fluid rounded mx-auto d-block",
+                                             :alt=>"Responsive image" %></div>
+
+    <hr class="my-4">
+    <p>Your mail is: <em><%= @user.email %></em>></p>
+    <hr class="my-4">
+    <table>
+      <tbody>
+        <tr class="pill">
+          <td class="badge badge-pill badge-info"><%=link_to "edit",edit_user_path(@user.id),data: { confirm: 'Are you sure?'} %></td>
+          <td class="badge badge-pill badge-warning"><%=link_to "destroy",user_path(@user.id),method: :delete, data: { confirm: 'Are you sure?'} %></td>
+          <td class="badge badge-pill badge-dark"><%=link_to "my favorites",favorite_path(@user.id)%></td>
+        </tr>
+      </tbody>
+    </table>
+
+    </div>

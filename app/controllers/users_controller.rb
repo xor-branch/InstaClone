@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:success]="Post update"
-      redirect_to new_session_path
+      redirect_to user_path(current_user.id)
 
     else
       render :new

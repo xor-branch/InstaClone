@@ -11,6 +11,7 @@
   password = "password"
   User.create!(name: name,
                email: email,
+               image: open("./public/uploads/user/image/1/profil-avatar.jpg"),
                password: password,
                password_confirmation: password,
                )

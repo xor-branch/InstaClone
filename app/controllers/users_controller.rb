@@ -17,12 +17,10 @@ class UsersController < ApplicationController
 
   end
   def edit
-
   end
   def update
     if @user.update(user_params)
       flash[:success]="Post update"
-      session.delete(:user_id)
       redirect_to new_session_path
 
     else

@@ -1,17 +1,24 @@
 <div class="container">
-  <div class="form-group">
-    <h1>login</h1>
-    <%= form_with(scope: :session, url:sessions_path,local:true) do|f| %>
-    <%= f.label :email %>
-    <%= f.email_field :email,:type=>"email",
-                            :class=>"form-control",
-                            :id=>"exampleInputEmail1" %>
-    <%= f.label :password %>
-    <%= f.password_field :password,:type=>"password",
-                            :class=>"form-control",
-                            :id=>"exampleInputPassword1" %>
-    <br>
-    <%= f.submit "Log in",:class=>"btn btn-primary" %>
-    <% end %>
-  </div>
+  <% unless logged_in? %>
+    <div class="form-group">
+      <h1>login</h1>
+      <%= form_with(scope: :session, url:sessions_path,local:true) do|f| %>
+      <%= f.label :email %>
+      <%= f.email_field :email,:type=>"email",
+                              :class=>"form-control",
+                              :id=>"exampleInputEmail1" %>
+      <%= f.label :password %>
+      <%= f.password_field :password,:type=>"password",
+                              :class=>"form-control",
+                              :id=>"exampleInputPassword1" %>
+      <br>
+      <%= f.submit "Log in",:class=>"btn btn-primary" %>
+      <% end %>
+    </div>
+    <% else %>
+    <p><strong>Notice</strong>: you are already logged in </p>
+    <p>Would you like to visit <span class="badge badge-pill badge-warning"><%= link_to "your Profile", user_path(current_user.id) %></span>?</p>
+    <p>If you wish to create another account, you must <span class="badge badge-pill badge-danger"><%= link_to "Logout", session_path(current_user.id), method: :delete, data:{confirm:'Are you sure ?'} %></span> first</p>
+  <% end %>
+
 </div>

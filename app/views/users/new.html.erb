@@ -1,3 +1,9 @@
 <div class="container">
+  <% unless logged_in? %>
     <%=render 'form' %>
+    <% else %>
+    <p><strong>Notice</strong>: you are already logged in </p>
+    <p>Would you like to visit <span class="badge badge-pill badge-warning"><%= link_to "your Profile", user_path(current_user.id) %></span>?</p>
+    <p>If you wish to create another account, you must <span class="badge badge-pill badge-danger"><%= link_to "Logout", session_path(current_user.id), method: :delete, data:{confirm:'Are you sure ?'} %></span> first</p>
+  <% end %>
 </div>

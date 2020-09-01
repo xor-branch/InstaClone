@@ -14,6 +14,7 @@ class BlogsController < ApplicationController
       render :new
     else
       if @blog.save
+          #BlogMailer.contact_mail(@blog).deliver
           flash[:success] = 'Post successfully create'
           redirect_to blogs_path
         else

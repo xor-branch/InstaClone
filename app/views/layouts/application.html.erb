@@ -14,7 +14,7 @@
       <% if logged_in? %>
       <ul>
           <li clase="left"><%= link_to "Profile", user_path(current_user.id) %></li>
-          <li clase="left"><%= link_to "Logout", session_path(current_user.id), method: :delete %></td>
+          <li clase="left"><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
           <li clase="right"><%= link_to "Home", blogs_path %></li>
           <li clase="right"><%= link_to "new", new_blog_path %></li>
       </ul>
